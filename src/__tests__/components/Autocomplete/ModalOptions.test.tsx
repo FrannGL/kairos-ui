@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { ModalOptions } from "@/components/Autocomplete/ModalOptions";
+import { ModalOptions } from "@/components/Autocomplete/AutocompletePopup";
 
 const options = [
   { alianzaCod: 1, alianzaDesc: "Opción 1" },

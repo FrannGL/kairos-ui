@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useId } from "react";
 
-import { Input } from "./Input";
-import { ModalOptions } from "./ModalOptions";
+import { Input } from "./AutocompleteInput";
+import { AutocompletePopup } from "./AutocompletePopup";
 import { filterOptions } from "./filterOptions";
 import styles from "./styles.module.scss";
 import { useClickOutside } from "@/hooks/useClickOutside";
@@ -177,7 +177,7 @@ export const Autocomplete = <T,>({
       />
 
       {open && (
-        <ModalOptions
+        <AutocompletePopup
           options={filteredOptions}
           value={value}
           getOptionLabel={getOptionLabel}

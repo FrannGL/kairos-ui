@@ -1,0 +1,114 @@
+.inputContainer {
+  position: relative;
+  border: 1.5px solid #070e46;
+  border-radius: 8px;
+  transition: border-color 0.3s, background-color 0.3s;
+
+  &.error {
+    border-color: #d32f2f;
+  }
+
+  &.disabled {
+    border-color: rgb(214, 213, 213);
+  }
+
+  .label {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    font-size: 10px;
+    color: rgba(7, 14, 70, 0.5);
+    padding: 0 4px;
+    transform: translateY(0);
+    pointer-events: none;
+    z-index: 1;
+
+    &.errorLabel {
+      color: #d32f2f;
+    }
+
+    &.disabled {
+      color: rgb(214, 213, 213);
+    }
+  }
+
+  .inputField {
+    width: 100%;
+    padding: 14px 12px;
+    padding-top: 20px;
+    border: none;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: 500;
+    outline: none;
+    box-sizing: border-box;
+    color: #070e46;
+    position: relative;
+    z-index: 2;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  .clearIcon {
+    position: absolute;
+    right: 40px;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: #001391;
+    cursor: pointer;
+    z-index: 2;
+    user-select: none;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .calendarButton {
+    position: absolute;
+    right: 12px;
+    top: 55%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.2s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.disabled,
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      .endIcon {
+        opacity: 0.5;
+      }
+    }
+
+    .endIcon {
+      width: 20px;
+      height: 20px;
+      transition: opacity 0.2s;
+
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.errorMessage {
+  color: #d32f2f;
+  font-size: 0.65rem;
+  margin-top: 4px;
+  padding-left: 5px;
+}

@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@storybook/testing-library": "^0.2.2",
+    "dayjs": "^1.11.13",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

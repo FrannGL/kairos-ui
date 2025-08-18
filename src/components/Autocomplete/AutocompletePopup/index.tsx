@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 
-interface ModalOptionsProps<T> {
+interface AutocompletePopupsProps<T> {
   options: T[];
   value: T | null;
   getOptionLabel: (option: T) => string;
@@ -10,14 +10,14 @@ interface ModalOptionsProps<T> {
   highlightedIndex: number;
 }
 
-export const ModalOptions = <T,>({
+export const AutocompletePopup = <T,>({
   options,
   value,
   getOptionLabel,
   getOptionValue,
   onSelect,
   highlightedIndex,
-}: ModalOptionsProps<T>) => {
+}: AutocompletePopupsProps<T>) => {
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 

@@ -59,3 +59,44 @@ export const Default: Story = {
   //   await expect(input).toHaveValue("Beta");
   // },
 };
+
+export const WithError: Story = {
+  render: () => {
+    const [value, setValue] = useState<Option | null>(null);
+
+    return (
+      <div style={{ width: 300 }}>
+        <Autocomplete<Option>
+          label="Sub-producto"
+          value={value}
+          onChange={setValue}
+          options={options}
+          getOptionLabel={(opt) => opt.label}
+          getOptionValue={(opt) => opt.id}
+          error="Campo obligatorio"
+          touched
+        />
+      </div>
+    );
+  },
+};
+
+export const Disabled: Story = {
+  render: () => {
+    const [value, setValue] = useState<Option | null>(null);
+
+    return (
+      <div style={{ width: 300 }}>
+        <Autocomplete<Option>
+          label="Sub-producto"
+          value={value}
+          onChange={setValue}
+          options={options}
+          getOptionLabel={(opt) => opt.label}
+          getOptionValue={(opt) => opt.id}
+          disabled
+        />
+      </div>
+    );
+  },
+};

@@ -43,13 +43,13 @@ export const Input = ({
       <div
         className={`${styles.inputContainer} ${
           touched && error ? styles.error : ""
-        }`}
+        } ${disabled ? styles.disabled : ""}`}
       >
         <label
           htmlFor={inputId}
           className={`${styles.label} ${
             touched && error ? styles.errorLabel : ""
-          }`}
+          } ${disabled ? styles.disabled : ""}`}
         >
           {label}
         </label>

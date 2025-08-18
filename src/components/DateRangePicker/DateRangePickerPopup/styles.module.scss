@@ -1,0 +1,154 @@
+.calendarPopup {
+  width: 520px;
+  position: absolute;
+  top: -250px;
+  right: -100px;
+  background: white;
+  border: 1.5px solid #070e46;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 8px;
+  font-family: "Benton Sans", sans-serif;
+}
+
+.monthsRow {
+  display: flex;
+  gap: 50px;
+
+  .monthWrapper {
+    width: 220px;
+
+    .monthHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      padding: 10px 0;
+
+      .monthTitle {
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #001391;
+        flex: 1;
+      }
+
+      .arrow {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        color: #070e46;
+        padding: 2px 6px;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+
+    .daysGrid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+
+      .day {
+        text-align: center;
+        padding: 3px 0;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #e0e7ff;
+        }
+      }
+
+      .inRange {
+        background-color: #001391;
+        color: #fff;
+      }
+
+      .selectedDay {
+        background-color: #001391;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: #ccc;
+  margin: 12px 0;
+}
+
+.quickRanges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+  justify-content: space-between;
+  align-items: center;
+
+  .buttonsContainer {
+    display: flex;
+    gap: 1px;
+
+    button {
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      background-color: white;
+      color: #001391;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: #001391;
+        color: white;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:first-child {
+        background-color: transparent;
+        color: red;
+
+        &:hover {
+          background-color: red;
+          color: white;
+        }
+      }
+
+      &:last-child {
+        background-color: #001391;
+        color: white;
+
+        &:hover {
+          background-color: #00097a;
+        }
+      }
+    }
+  }
+}
