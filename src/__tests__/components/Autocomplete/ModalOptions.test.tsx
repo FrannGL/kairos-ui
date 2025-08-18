@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { ModalOptions } from "@/components/Autocomplete/AutocompletePopup";
+import { AutocompletePopup } from "@/components/Autocomplete/AutocompletePopup";
 
 const options = [
   { alianzaCod: 1, alianzaDesc: "Opción 1" },
@@ -8,11 +8,11 @@ const options = [
   { alianzaCod: 3, alianzaDesc: "Opción 3" },
 ];
 
-describe("ModalOptions", () => {
+describe("AutocompletePopup", () => {
   it("renderiza opciones, selecciona y destaca la correcta", () => {
     const handleSelect = vi.fn();
     render(
-      <ModalOptions
+      <AutocompletePopup
         options={options}
         value={options[1]}
         getOptionLabel={(o) => o.alianzaDesc}
