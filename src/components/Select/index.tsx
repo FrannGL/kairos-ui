@@ -29,6 +29,34 @@ export interface SelectProps {
   onChange: (value: string | number) => void;
 }
 
+/**
+ * `Select` es un componente de lista desplegable controlada.
+ *
+ * - Permite seleccionar un valor de una lista de opciones.
+ * - Soporta deshabilitado (`disabled`), mostrando el texto en gris.
+ * - Muestra mensajes de error cuando `touched` y `error` están definidos.
+ * - Cierra automáticamente el menú al hacer click fuera.
+ *
+ * Ejemplo de uso:
+ * ```tsx
+ * const [country, setCountry] = useState<string | number | null>(null);
+ * const options = [
+ *   { value: "mx", label: "México" },
+ *   { value: "ar", label: "Argentina" },
+ *   { value: "us", label: "Estados Unidos" },
+ * ];
+ *
+ * <Select
+ *   label="País"
+ *   value={country}
+ *   options={options}
+ *   onChange={setCountry}
+ *   error={country === null ? "Debe seleccionar un país" : undefined}
+ *   touched={true}
+ * />
+ * ```
+ */
+
 export const Select = ({
   label,
   value,

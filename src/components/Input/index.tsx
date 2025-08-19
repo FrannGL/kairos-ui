@@ -1,6 +1,9 @@
 import { useId } from "react";
 import styles from "./styles.module.scss";
 
+/**
+ * Props para el componente Autocomplete.
+ */
 export interface InputProps {
   /** Label del input */
   label: string;
@@ -29,6 +32,29 @@ export interface InputProps {
   /** Callback al cambiar el valor */
   onChange: (value: string) => void;
 }
+
+/**
+ * `Input` es un componente de campo controlado.
+ *
+ * - Soporta tipos "text" y "number".
+ * - Valida y filtra números cuando type="number".
+ * - Muestra mensajes de error cuando se define `touched` y `error`.
+ * - Soporta estado deshabilitado.
+ *
+ * Ejemplo de uso:
+ * ```tsx
+ * const [name, setName] = useState("");
+ *
+ * <Input
+ *   label="Nombre y Apellido"
+ *   value={name}
+ *   onChange={setName}
+ *   placeholder="Ingresa tu email"
+ *   error={name === "" ? "Campo requerido" : undefined}
+ *   touched={true}
+ * />
+ * ```
+ */
 
 export const Input = ({
   label,
