@@ -1,0 +1,106 @@
+import { useState, useRef } from "react";
+
+import { useClickOutside } from "@/hooks/useClickOutside";
+import styles from "./styles.module.scss";
+
+export interface SelectOption {
+  /** Valor interno de la opción */
+  value: string | number;
+  /** Texto a mostrar */
+  label: string;
+}
+
+export interface SelectProps {
+  /** Label del select */
+  label: string;
+  /** Nombre del select */
+  name?: string;
+  /** Valor seleccionado */
+  value: string | number | null;
+  /** Lista de opciones */
+  options: SelectOption[];
+  /** Deshabilita el select */
+  disabled?: boolean;
+  /** Mensaje de error */
+  error?: string;
+  /** Indica si el campo fue tocado */
+  touched?: boolean;
+  /** Callback al cambiar el valor */
+  onChange: (value: string | number) => void;
+}
+
+export const Select = ({
+  label,
+  value,
+  options,
+  disabled = false,
+  error,
+  touched,
+  onChange,
+}: SelectProps) => {
+  const [open, setOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(wrapperRef, () => setOpen(false));
+
+  const selectedOption = options.find((opt) => opt.value === value) || null;
+
+  const handleToggle = () => {
+    if (!disabled) setOpen((prev) => !prev);
+  };
+
+  const handleSelect = (option: SelectOption) => {
+    onChange(option.value);
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <div
+        className={`${styles.selectContainer} ${
+          disabled ? styles.disabled : ""
+        } ${touched && error ? styles.error : ""}`}
+        ref={wrapperRef}
+      >
+        <label
+          className={`${styles.label} ${disabled ? styles.disabled : ""} ${
+            touched && error ? styles.errorLabel : ""
+          }`}
+        >
+          {label}
+        </label>
+
+        <div className={styles.selectWrapper}>
+          <div
+            className={`${styles.selectedValue} ${
+              disabled ? styles.disabledText : ""
+            } ${touched && error ? styles.errorText : ""}`}
+            onClick={handleToggle}
+          >
+            {selectedOption?.label || "Selecciona una opción ..."}
+            <img
+              src="/assets/icons/arrow.svg"
+              alt="arrow-icon"
+              className={`${styles.dropdownIcon} ${open ? styles.rotate : ""}`}
+            />
+          </div>
+
+          {open && (
+            <ul className={styles.optionsList}>
+              {options.map((opt) => (
+                <li
+                  key={opt.value}
+                  className={value === opt.value ? styles.selectedOption : ""}
+                  onClick={() => handleSelect(opt)}
+                >
+                  {opt.label}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+      {touched && error && <div className={styles.errorMessage}>{error}</div>}
+    </>
+  );
+};
