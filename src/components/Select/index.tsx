@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-
 import { useClickOutside } from "@/hooks/useClickOutside";
-import styles from "./styles.module.scss";
+import { SelectPopup } from "./SelectPopup/SelectPopup";
+import styles from "./Select.module.scss";
 
 export interface SelectOption {
   /** Valor interno de la opción */
@@ -56,7 +56,6 @@ export interface SelectProps {
  * />
  * ```
  */
-
 export const Select = ({
   label,
   value,
@@ -114,17 +113,11 @@ export const Select = ({
           </div>
 
           {open && (
-            <ul className={styles.optionsList}>
-              {options.map((opt) => (
-                <li
-                  key={opt.value}
-                  className={value === opt.value ? styles.selectedOption : ""}
-                  onClick={() => handleSelect(opt)}
-                >
-                  {opt.label}
-                </li>
-              ))}
-            </ul>
+            <SelectPopup
+              options={options}
+              value={value}
+              onSelect={handleSelect}
+            />
           )}
         </div>
       </div>
